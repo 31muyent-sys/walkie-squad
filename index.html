@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Walkie Squad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="device">
+  <div class="antenna" aria-hidden="true"></div>
+  <div class="grille" aria-hidden="true"></div>
+
+  <!-- step 1: make or join a room -->
+  <section id="lobby">
+    <h1>Walkie Squad</h1>
+    <p class="sub">Two phones, one code, instant walkie-talkies. No app, no account.</p>
+    <label class="field">Your name<input id="name" maxlength="16" autocomplete="off" placeholder="e.g. Jeff"></label>
+    <button class="big" id="create">Make a room</button>
+    <div class="or">or join one</div>
+    <div class="join">
+      <input id="code" maxlength="4" autocomplete="off" placeholder="CODE" aria-label="Room code">
+      <button class="ghost" id="join">Join</button>
+    </div>
+    <p class="msg" id="lobby-msg" role="status"></p>
+  </section>
+
+  <!-- step 2: talk -->
+  <section id="room" hidden>
+    <div class="screen">
+      <div class="row"><span class="label">Channel</span><span class="led" id="led"></span></div>
+      <div class="channel" id="channel">----</div>
+      <button class="share" id="share">Copy invite link</button>
+    </div>
+    <ul class="squad" id="squad" aria-label="Who's in the room"></ul>
+    <button class="ptt" id="ptt" aria-label="Hold to talk"><span id="ptt-label">Hold to talk</span></button>
+    <p class="hint">Hold the button, or hold <kbd>Space</kbd></p>
+    <p class="msg" id="room-msg" role="status"></p>
+    <button class="ghost leave" id="leave">Leave</button>
+  </section>
+</main>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
